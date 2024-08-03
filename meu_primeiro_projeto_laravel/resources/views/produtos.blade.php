@@ -1,24 +1,31 @@
-<!-- resources/views/produtos.blade.php -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-    @include('components.header')
+@extends('layouts.master')
 
-    <div class="container">
-        <h1>Lista de Produtos</h1>
-        <ul>
-            @foreach ($produtos as $produto)
-                <li>{{ $produto['nome'] }} - R$ {{ number_format($produto['preco'], 2, ',', '.') }}</li>
-            @endforeach
-        </ul>
+@include('components.header')
+        <h1>Produtos</h1>
+        <a href="{{ route('produtos.add') }}" class="btn btn-primary">Adicionar Produto</a>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($produtos as $produto)
+                    <tr>
+                        <td>{{ $produto->id }}</td>
+                        <td>{{ $produto->nome }}</td>
+                        <td>{{ $produto->descricao }}</td>
+                        <td>{{ $produto->preco }}</td>
+                        <td>{{ $produto->quantidade }}</td>
+                        
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+         @include('components.footer')
     </div>
-
-    @include('components.footer')
-</body>
-</html>

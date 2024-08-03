@@ -1,4 +1,3 @@
-<!-- resources/views/home.blade.php -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,9 +7,9 @@
     
     <!-- Incluindo Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- Seu CSS Personalizado -->
     
+    <!-- Seu CSS Personalizado -->
+    <link rel="stylesheet" href="{{ ('asset/css/style.css') }}">
 </head>
 <body>
     <!-- Header -->
@@ -21,26 +20,37 @@
     <!-- Conteúdo Principal -->
     <div class="container mt-5">
         <h1>Bem-vindo à Página Inicial</h1>
-
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h2>Produtos</h2>
-                <ul class="list-group">
-                    @foreach ($produtos as $produto)
-                        <li class="list-group-item">{{ $produto['nome'] }} - R$ {{ number_format($produto['preco'], 2, ',', '.') }}</li>
-                    @endforeach
-                </ul>
+        
+        <!-- Carrossel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/slide1.jpg') }}" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/slide2.jpg') }}" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/slide3.jpg') }}" class="d-block w-100" alt="Slide 3">
+                </div>
             </div>
-
-            <div class="col-md-6">
-                <h2>Informações de Contato</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">Telefone: {{ $contato['telefone'] }}</li>
-                    <li class="list-group-item">Email: {{ $contato['email'] }}</li>
-                    <li class="list-group-item">Endereço: {{ $contato['endereco'] }}</li>
-                </ul>
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
         </div>
+        <!-- Fim do Carrossel -->
+
+        <!-- Outros conteúdos podem vir aqui -->
     </div>
 
     <!-- Footer -->
