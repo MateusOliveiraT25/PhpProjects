@@ -13,7 +13,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::all();
-        return view('produtos',compact('produtos'));
+        return view('/produtos',compact('produtos'));
     }
 
     // Método para exibir o formulário de adicionar produto
