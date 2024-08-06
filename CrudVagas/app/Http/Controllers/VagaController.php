@@ -74,14 +74,18 @@ class VagaController extends Controller
         Vaga::update($request->all());
 
         return redirect()->route('vagas.index')
-        ->with('success', 'Vaga criada com sucesso.');
+        ->with('success', 'Vaga atualizada com sucesso.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Vaga $vaga)
     {
-        //
+        $vaga->delete();
+
+        return redirect()->route('vagas.index')
+                         ->with('success', 'Vaga Deletada com Sucesso.');
+
     }
 }
