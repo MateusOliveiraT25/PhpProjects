@@ -21,7 +21,7 @@ class VagaController extends Controller
      */
     public function create()
     {
-        return view('vaga.create');
+        return view('vagas.create');
     }
 
     /**
@@ -33,7 +33,7 @@ class VagaController extends Controller
             'titulo' => 'required',
             'descricao' => 'required',
             'setor' => 'required',
-            'remuneracao' => 'required|decimal',
+            'remuneracao' => 'required|numeric',
             'empresa' => 'required',
         ]);
         Vaga::create($request->all());
@@ -68,10 +68,10 @@ class VagaController extends Controller
             'titulo' => 'required',
             'descricao' => 'required',
             'setor' => 'required',
-            'remuneracao' => 'required|decimal',
+            'remuneracao' => 'required|numeric',
             'empresa' => 'required',
         ]);
-        Vaga::update($request->all());
+        $vaga->update($request->all());
 
         return redirect()->route('vagas.index')
         ->with('success', 'Vaga atualizada com sucesso.');

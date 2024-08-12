@@ -7,5 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::resource('vagas', [VagaController::class]);
+// Correto: Passar a classe do controlador diretamente
+Route::resource('vagas', VagaController::class);
