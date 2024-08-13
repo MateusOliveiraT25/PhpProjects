@@ -45,7 +45,7 @@ class UserController extends Controller
 
 
    // Processar o registro de um novo usuário
-   public function registro(Request $request)
+   public function registro(Request $request)//Pega inf do form
    {
        $request->validate([
            'name' => 'required|string|max:255',
