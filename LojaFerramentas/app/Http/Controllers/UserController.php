@@ -65,7 +65,7 @@ class UserController extends Controller
            'password' => Hash::make($request->password),
        ]);
 
-       return redirect('/');
+       return redirect('/login');
    }
 
    // Realizar o logout do usuário
@@ -73,8 +73,10 @@ class UserController extends Controller
    {
        Auth::logout();
 
-       $request->session()->invalidate();
+       
        $request->session()->regenerateToken();
+       $request->session()->invalidate();
+   
 
        return redirect('/');
    }

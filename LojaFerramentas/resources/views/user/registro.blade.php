@@ -9,12 +9,18 @@
 
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" name="name" class="form-control" required>
+            <input type="text" name="name" class="form-control" required value="{{ old('name') }}">
+            @if ($errors->has('name'))
+                <small class="text-danger">{{ $errors->first('name') }}</small>
+            @endif
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="email" name="email" class="form-control" required value="{{ old('email') }}">
+            @if ($errors->has('email'))
+                <small class="text-danger">{{ $errors->first('email') }}</small>
+            @endif
         </div>
 
         <div class="form-group">
@@ -28,6 +34,9 @@
         <div class="form-group">
             <label for="password_confirmation">Confirme a Senha</label>
             <input type="password" name="password_confirmation" class="form-control" required>
+            @if ($errors->has('password_confirmation'))
+                <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+            @endif
         </div>
 
         <button type="submit" class="btn btn-primary">Registrar-se</button>

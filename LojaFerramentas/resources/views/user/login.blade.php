@@ -18,10 +18,10 @@
             <input type="password" name="password" class="form-control" required>
         </div>
 
-        <div class="form-group form-check">
-            <input type="checkbox" name="remember" class="form-check-input" id="remember">
-            <label class="form-check-label" for="remember">Lembre-me</label>
+        <div class="form-group">
+            <a href="{{ route('user.registro') }}" class="btn btn-link">Criar conta</a>
         </div>
+        
 
         <button type="submit" class="btn btn-primary">Entrar</button>
     </form>

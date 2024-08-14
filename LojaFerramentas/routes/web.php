@@ -27,5 +27,5 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 // Rota para o dashboard, protegida por autenticação
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware('auth')->name('dashboard');
