@@ -16,7 +16,7 @@ class ProdutosMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->tipo_usuario === "Administrador") {
+        if (Auth::check() && Auth::user()->tipo_usuario === "administrador") {
             return $next($request);
         }
     
