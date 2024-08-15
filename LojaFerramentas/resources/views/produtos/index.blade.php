@@ -22,7 +22,6 @@
         <tr>
             <th>N°</th>
             <th>Nome</th>
-            <th>Descrição</th>
             <th>Categoria</th>
             <th>Quantidade</th>
             <th>Preço</th>
@@ -32,7 +31,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $produto->nome }}</td>
-            <td>{{ $produto->descricao }}</td>
+          
             <td>{{ $produto->categoria}}</td>
             <td>{{ $produto->quantidade}}</td>
             <td>{{ $produto->preco }}</td>

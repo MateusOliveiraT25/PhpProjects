@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Middleware\ProdutosMiddleware;
+
+
 Route::get('/', function () {
     return view('home'); // Página inicial, onde pode estar o formulário de registro
 });
@@ -32,7 +35,7 @@ Route::get('/dashboard', function () {
 
 
 //routa p/ produtos
-Route::resource('produtos', ProdutoController::class);
+Route::resource('produtos', ProdutoController::class)->middleware(ProdutosMiddleware::class);
 
 
 
