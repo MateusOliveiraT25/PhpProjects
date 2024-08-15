@@ -38,7 +38,7 @@
             <td>{{ $produto->preco }}</td>
             <td>
                 <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('produtos.show', $produto->id) }}">Mostrar</a>
+                   
                     <a class="btn btn-primary" href="{{ route('produtos.edit', $produto->id) }}">Editar</a>
 
 

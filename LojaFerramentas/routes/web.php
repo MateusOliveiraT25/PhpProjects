@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ProdutoController;
 Route::get('/', function () {
     return view('home'); // Página inicial, onde pode estar o formulário de registro
 });
@@ -29,5 +29,10 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth')->name('dashboard');
+
+
+//routa p/ produtos
+Route::resource('produtos', ProdutoController::class);
+
 
 

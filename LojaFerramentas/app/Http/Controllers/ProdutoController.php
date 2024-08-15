@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Produto;
 class ProdutoController extends Controller
 {
     /**
@@ -46,7 +46,7 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Produto $produto)
     {
         return view('produtos.edit',compact('produto'));
     }
