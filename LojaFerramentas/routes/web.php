@@ -29,3 +29,5 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth')->name('dashboard');
+
+

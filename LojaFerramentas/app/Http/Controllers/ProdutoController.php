@@ -28,7 +28,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required',
+           'nome' => 'required|string|max:255',
             'descricao' => 'required',
             'categoria' => 'required',
             'preco' => 'required|numeric',
@@ -59,7 +59,7 @@ class ProdutoController extends Controller
     public function update(Request $request,Produto $produto)
     {
         $request->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|max:255',
             'descricao' => 'required',
             'categoria' => 'required',
             'preco' => 'required|numeric',
@@ -78,7 +78,7 @@ class ProdutoController extends Controller
     {
         $produto->delete();
 
-        return redirect()->route('produto.index')
+        return redirect()->route('produtos.index')
                          ->with('success', 'Produto Deletado com Sucesso.');
 
     }
