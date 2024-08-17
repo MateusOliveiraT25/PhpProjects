@@ -3,6 +3,7 @@
 
 @section('content')
 {{-- formulario --}}
+<br><br><br><br>
 <div class="container">
     <h1>Login</h1>
     <form method="POST" action="{{ route('user.login') }}">

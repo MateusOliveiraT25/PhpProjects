@@ -2,6 +2,7 @@
 
 @section('content')
 {{-- formulário --}}
+<br><br><br><br>
 <div class="container">
     <h1>Registrar-se</h1>
     <form method="POST" action="{{ route('user.registro') }}">

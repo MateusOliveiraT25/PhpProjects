@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="container">
+<br><br>
     <h1 class="my-4">Produtos</h1>
 
 
