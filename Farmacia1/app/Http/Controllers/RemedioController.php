@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Remedio;
+use Illuminate\Support\Facades\Storage;
 
 class RemedioController extends Controller
 {
@@ -35,11 +36,21 @@ class RemedioController extends Controller
             'categoria' => 'required',
             'preco' => 'required|numeric',
             'quantidade' => 'required|numeric',
-            'fabricante' => 'nullable|string|max:255', // Novo campo
-            'data_validade' => 'nullable|date', // Novo campo
+            'fabricante' => 'nullable|string|max:255',
+            'data_validade' => 'nullable|date',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        Remedio::create($request->all());
+        $data = $request->all();
+        
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/images', $filename);
+            $data['img'] = $filename;
+        }
+
+        Remedio::create($data);
 
         return redirect()->route('remedios.index')
             ->with('success', 'Remédio criado com sucesso.');
@@ -72,11 +83,26 @@ class RemedioController extends Controller
             'categoria' => 'required',
             'quantidade' => 'required|numeric',
             'preco' => 'required|numeric',
-            'fabricante' => 'nullable|string|max:255', // Novo campo
-            'data_validade' => 'nullable|date', // Novo campo
+            'fabricante' => 'nullable|string|max:255',
+            'data_validade' => 'nullable|date',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $remedio->update($request->all());
+        $data = $request->all();
+        
+        if ($request->hasFile('img')) {
+            // Delete the old image if it exists
+            if ($remedio->img) {
+                Storage::delete('public/images/' . $remedio->img);
+            }
+
+            $file = $request->file('img');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/images', $filename);
+            $data['img'] = $filename;
+        }
+
+        $remedio->update($data);
 
         return redirect()->route('remedios.index')
             ->with('success', 'Remédio atualizado com sucesso.');
@@ -87,6 +113,11 @@ class RemedioController extends Controller
      */
     public function destroy(Remedio $remedio)
     {
+        // Delete the image if it exists
+        if ($remedio->img) {
+            Storage::delete('public/images/' . $remedio->img);
+        }
+
         $remedio->delete();
 
         return redirect()->route('remedios.index')

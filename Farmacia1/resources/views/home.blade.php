@@ -5,13 +5,13 @@
     <div class="mt-5 pt-4"></div>
 
     <div class="container">
-        <!-- Carrossel de Remedios -->
+        <!-- Carrossel de Remédios -->
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($remedios as $index => $remedio)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <!-- Certifique-se de fornecer o caminho correto para a imagem -->
-                        <img src="/assets/img/img0.png" class="d-block w-100" alt="{{ $remedio->nome }}">
+                        <!-- Verificação da imagem -->
+                        <img src="{{ $remedio->img ? asset('storage/images/' . $remedio->img) : asset('assets/img/img0.png') }}" class="d-block w-100" alt="{{ $remedio->nome }}">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{ $remedio->nome }}</h5>
                             <p>{{ $remedio->descricao }}</p>
@@ -35,11 +35,10 @@
 
         <!-- Links de Login e Registro -->
         <div class="text-center">
-            <a href="/login" class="btn btn-primary btn-lg me-2">Login</a>
-            <a href="/registro" class="btn btn-secondary btn-lg">Registro</a>
+            <a href="{{ route('user.login') }}" class="btn btn-primary btn-lg me-2">Login</a>
+            <a href="{{ route('user.registro') }}" class="btn btn-secondary btn-lg">Registro</a>
         </div>
     </div>
-
 @endsection
 
 <!-- Seção para exibir mensagens de erro -->
