@@ -83,8 +83,8 @@ class RemedioController extends Controller
             'categoria' => 'required',
             'quantidade' => 'required|numeric',
             'preco' => 'required|numeric',
-            'fabricante' => 'nullable|string|max:255',
-            'data_validade' => 'nullable|date',
+            'fabricante' => 'required|nullable|string|max:255',
+            'data_validade' => 'required|nullable|date',
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 

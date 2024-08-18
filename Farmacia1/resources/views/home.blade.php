@@ -32,10 +32,6 @@
         <!-- Espaçamento inferior -->
         <div class="mt-4"></div>
 
-        <!-- Links de Login e Registro -->
-        <div class="text-center">
-            <a href="{{ route('user.login') }}" class="btn btn-primary btn-lg me-2">Login</a>
-            <a href="{{ route('user.registro') }}" class="btn btn-secondary btn-lg">Registro</a>
-        </div>
+       
     </div>
 @endsection
