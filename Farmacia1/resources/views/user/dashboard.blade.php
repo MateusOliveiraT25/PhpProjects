@@ -27,6 +27,8 @@
                         <h5 class="card-title">{{ $remedio->nome }}</h5>
                         <p class="card-text">{{ $remedio->descricao }}</p>
                         <p class="card-text">Preço: R$ {{ number_format($remedio->preco, 2, ',', '.') }}</p>
+                        <!-- Adiciona o fabricante ao card -->
+                        <p class="card-text">Fabricante: {{ $remedio->fabricante }}</p>
                         <a href="{{ route('remedios.show', $remedio->id) }}" class="btn btn-primary">Ver Remédio</a>
                     </div>
                 </div>
