@@ -1,33 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Espaçamento superior para compensar o cabeçalho fixo -->
     <div class="mt-5 pt-4"></div>
 
     <div class="container">
-        <!-- Carrossel de Remédios -->
-        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach ($remedios as $index => $remedio)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <!-- Verificação da imagem -->
-                        <img src="{{ $remedio->img ? asset('storage/images/' . $remedio->img) : asset('assets/img/img0.png') }}" class="d-block w-100" alt="{{ $remedio->nome }}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ $remedio->nome }}</h5>
-                            <p>{{ $remedio->descricao }}</p>
-                            <p>Preço: R$ {{ number_format($remedio->preco, 2, ',', '.') }}</p>
+        <!-- Seção de Remédios -->
+        <h1>Remédios Disponíveis</h1>
+        <div class="row">
+            @foreach ($remedios as $remedio)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- Verifica se a imagem existe e se é válida -->
+                        @if($remedio->img)
+                            <img src="{{ asset('storage/images/' . $remedio->img) }}" class="card-img-top" alt="{{ $remedio->nome }}">
+                        @else
+                            <img src="{{ asset('assets/img/img0.png') }}" class="card-img-top" alt="{{ $remedio->nome }}">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $remedio->nome }}</h5>
+                            <p class="card-text">{{ $remedio->descricao }}</p>
+                            <p class="card-text">Preço: R$ {{ number_format($remedio->preco, 2, ',', '.') }}</p>
+                            <p class="card-text">Fabricante: {{ $remedio->fabricante }}</p>
+                            <!-- Botão para visualizar detalhes do remédio -->
+                            <a href="{{ route('remedios.show', $remedio->id) }}" class="btn btn-primary">Ver Remédio</a>
                         </div>
                     </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
+                </div>
+            @endforeach
         </div>
 
         <!-- Espaçamento inferior -->
@@ -40,15 +39,3 @@
         </div>
     </div>
 @endsection
-
-<!-- Seção para exibir mensagens de erro -->
-@if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
