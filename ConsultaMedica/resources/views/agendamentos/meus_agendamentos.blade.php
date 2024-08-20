@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5"><br><br>
         <h1 class="mb-4">Meus Agendamentos</h1>
 
         <!-- Verifique se há mensagens de sucesso ou erro -->

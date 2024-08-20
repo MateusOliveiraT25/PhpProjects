@@ -22,7 +22,7 @@ class ConsultaController extends Controller
 
         $consultas = Consulta::all(); // Ajuste conforme a lógica de recuperação das consultas
 
-        return view('consultas.index', compact('consultas'));
+        return view('home', compact('consultas'));
     }
 
     /**

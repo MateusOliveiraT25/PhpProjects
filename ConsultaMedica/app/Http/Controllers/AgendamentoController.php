@@ -41,7 +41,7 @@ class AgendamentoController extends Controller
         // Marcar a consulta como não disponível
         $consulta->update(['disponivel' => false]);
     
-        return redirect()->back()->with('success', 'Consulta agendada com sucesso.');
+        return redirect()->route('home')->with('success', 'Consulta agendada com sucesso.');
     }
     
     
