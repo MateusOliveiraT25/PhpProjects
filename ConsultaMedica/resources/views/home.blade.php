@@ -14,41 +14,45 @@
             </div>
         @endif
 
-        @if ($consultas->where('disponivel', true)->count() > 0)
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Médico</th>
-                        <th>Especialidade</th>
-                        <th>Data da Consulta</th>
-                        <th>Horário</th>
-                        <th>Disponível</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($consultas as $consulta)
-                        @if ($consulta->disponivel)
-                            <tr>
-                                <td>{{ $consulta->nome }}</td>
-                                <td>{{ $consulta->especialidade }}</td>
-                                <td>{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</td>
-                                <td>{{ $consulta->disponivel ? 'Sim' : 'Não' }}</td>
-                                <td>
-                                    <form method="POST" action="{{ route('agendamentos.store') }}">
-                                        @csrf
-                                        <input type="hidden" name="consulta_id" value="{{ $consulta->id }}">
-                                        <button type="submit" class="btn btn-primary">Agendar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endif
-                    @endforeach
-                </tbody>
-            </table>
+        @auth
+            @if ($consultas->where('disponivel', true)->count() > 0)
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Data da Consulta</th>
+                            <th>Horário</th>
+                            <th>Disponível</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($consultas as $consulta)
+                            @if ($consulta->disponivel)
+                                <tr>
+                                    <td>{{ $consulta->nome }}</td>
+                                    <td>{{ $consulta->especialidade }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</td>
+                                    <td>{{ $consulta->disponivel ? 'Sim' : 'Não' }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('agendamentos.store') }}">
+                                            @csrf
+                                            <input type="hidden" name="consulta_id" value="{{ $consulta->id }}">
+                                            <button type="submit" class="btn btn-primary">Agendar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p class="text-muted">Não há consultas disponíveis no momento.</p>
+            @endif
         @else
-            <p class="text-muted">Não há consultas disponíveis no momento.</p>
-        @endif
+            <p class="text-muted">Você precisa estar logado para visualizar as consultas.</p>
+        @endauth
     </div>
 @endsection
