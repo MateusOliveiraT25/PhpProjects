@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Consulta;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
-
 
 class ConsultaController extends Controller
 {
@@ -15,14 +13,8 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-         // Verifica se o usuário está autenticado
-         if (!Auth::check()) {
-            return redirect('/login')->withErrors('Você precisa estar logado para ver as consultas.');
-        }
-
-        $consultas = Consulta::all(); // Ajuste conforme a lógica de recuperação das consultas
-
-        return view('home', compact('consultas'));
+        $consultas = Consulta::all();
+        return view('consultas.index', compact('consultas'));
     }
 
     /**
