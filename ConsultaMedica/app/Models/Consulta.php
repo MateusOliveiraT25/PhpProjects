@@ -13,8 +13,15 @@ class Consulta extends Model
         'nome',
         'crm',
         'especialidade',
-        'periodo',
-        'data_consulta', // Adicionado
-        'status'
+        'horario',
+        'data_consulta',
+        'status',
+        'disponivel',
+    ];
+
+    protected $casts = [
+        'data_consulta' => 'date',
+      
+        'disponivel' => 'boolean',
     ];
 }

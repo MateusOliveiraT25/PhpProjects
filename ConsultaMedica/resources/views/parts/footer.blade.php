@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<div class="container">
+<div class="container flex-grow-1">
     <!-- Seu conteúdo aqui -->
 
     <!-- Rodapé -->

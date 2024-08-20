@@ -33,7 +33,7 @@
             <td>{{ $consulta->nome }}</td>
             <td>{{ $consulta->crm }}</td>
             <td>{{ $consulta->especialidade }}</td>
-            <td>{{ $consulta->periodo }}</td>
+            <td>{{ $consulta->horario }}</td>
             <td>{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</td> <!-- Formata a data -->
             <td>{{ ucfirst($consulta->status) }}</td> <!-- Capitaliza o status -->
             <td>

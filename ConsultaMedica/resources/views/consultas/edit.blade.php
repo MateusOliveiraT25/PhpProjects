@@ -34,15 +34,19 @@
                 <input type="text" name="especialidade" class="form-control" value="{{ old('especialidade', $consulta->especialidade) }}" placeholder="Especialidade">
             </div>
 
-            <div class="form-group">
-                <label for="periodo">Período:</label>
-                <input type="text" name="periodo" class="form-control" value="{{ old('periodo', $consulta->periodo) }}" placeholder="Período">
-            </div>
 
             <div class="form-group">
                 <label for="data_consulta">Data da Consulta:</label>
                 <input type="date" name="data_consulta" class="form-control" value="{{ old('data_consulta', $consulta->data_consulta) }}">
             </div>
+
+          <div class="form-group">
+    <label for="horario">Horário:</label>
+    <input type="time" name="horario" class="form-control" value="{{ old('horario') }}" min="07:00" max="20:00">
+</div>
+
+
+          
 
             <div class="form-group">
                 <label for="status">Status:</label>

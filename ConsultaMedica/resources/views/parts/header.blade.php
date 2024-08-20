@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- Nome da loja -->
-            <a class="navbar-brand" href="#">Consultas</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Consultas</a>
+
 
             <!-- Botão para alternar o menu em telas menores -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +17,17 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
 
-                    <!-- Exibe opções de consultas para medicos -->
+                    <!-- Exibe opções de consultas para médicos -->
                     @if(Auth::check() && Auth::user()->tipo_usuario == 'medico')
                         <li class="nav-item">
                             <a class="nav-link" href="/consultas">Consultas</a>
+                        </li>
+                    @endif
+
+                    <!-- Exibe "Meus Agendamentos" para usuários autenticados -->
+                    @if(Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="/meus-agendamentos">Meus Agendamentos</a>
                         </li>
                     @endif
                 </ul>
@@ -29,7 +37,7 @@
                     @if (Auth::check())
                         <li class="nav-item">
                             <span class="navbar-text">
-                                Bem vindo, {{ Auth::user()->name }} ({{ Auth::user()->tipo_usuario }})
+                                {{ Auth::user()->name }} ({{ Auth::user()->tipo_usuario }})
                             </span>
                         </li>
                         <li class="nav-item">

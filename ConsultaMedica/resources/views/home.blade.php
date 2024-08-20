@@ -1,37 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mt-5 pt-4"></div>
+    <div class="container mt-5"><br><br>
+        <h1 class="mb-4">Consultas Disponíveis</h1>
 
-    <div class="container">
-        <!-- Seção de Remédios -->
-        <h1>Consultas Disponíveis</h1>
-        <div class="row">
-            @foreach ($consultas as $consulta)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <!-- Verifica se a imagem existe e se é válida -->
-                        @if($consulta->img)
-                            <img src="{{ asset('storage/images/' . $consulta->img) }}" class="card-img-top" alt="{{ $consulta->nome }}">
-                        @else
-                            <img src="{{ asset('assets/img/img0.png') }}" class="card-img-top" alt="{{ $consulta->nome }}">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $consulta->nome }}</h5>
-                            <p class="card-text">{{ $consulta->crm }}</p>
-                            <p class="card-text">Preço: R$ {{ number_format($consulta->preco, 2, ',', '.') }}</p>
-                            <p class="card-text">Fabricante: {{ $consulta->fabricante }}</p>
-                            <!-- Botão para visualizar detalhes do remédio -->
-                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-primary">Ver Consulta</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <!-- Início do Banner -->
+        <div class="banner mb-4">
+            <img src="{{ asset('assets/img/img2.png') }}" class="d-block w-100" alt="Banner">
+            <div class="banner-caption">
+                <h2>Bem-vindo ao Sistema de Consultas</h2>
+                <p>Encontre as melhores consultas disponíveis para você.</p>
+            </div>
         </div>
+        <!-- Fim do Banner -->
 
-        <!-- Espaçamento inferior -->
-        <div class="mt-4"></div>
-
-       
+        @auth
+            @if ($consultas->where('disponivel', true)->count() > 0)
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Data da Consulta</th>
+                            <th>Horário</th>
+                            <th>Disponível</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($consultas->where('disponivel', true) as $consulta)
+                            <tr>
+                                <td>{{ $consulta->nome }}</td>
+                                <td>{{ $consulta->especialidade }}</td>
+                                <td>{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</td>
+                                <td>{{ $consulta->disponivel ? 'Sim' : 'Não' }}</td>
+                                <td>
+                                    <form method="POST" action="{{ route('agendamentos.store') }}">
+                                        @csrf
+                                        <input type="hidden" name="consulta_id" value="{{ $consulta->id }}">
+                                        <button type="submit" class="btn btn-primary">Agendar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p class="text-muted">Não há consultas disponíveis no momento.</p>
+            @endif
+        @else
+            <p class="text-muted">Você precisa estar logado para visualizar as consultas.</p>
+        @endauth
     </div>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+// app/Models/Agendamento.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,15 +10,8 @@ class Agendamento extends Model
 {
     use HasFactory;
 
-    // Define os atributos que podem ser preenchidos em massa
-    protected $fillable = [
-        'consulta_id',
-        'nome',
-        'email',
-        'data_agendamento',
-    ];
+    protected $fillable = ['consulta_id', 'user_id', 'data_agendamento'];
 
-    // Define o relacionamento com o modelo Consulta
     public function consulta()
     {
         return $this->belongsTo(Consulta::class);

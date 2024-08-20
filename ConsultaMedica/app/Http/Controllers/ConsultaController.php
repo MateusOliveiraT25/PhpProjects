@@ -34,7 +34,7 @@ class ConsultaController extends Controller
             'nome' => 'required|string|max:255',
             'crm' => 'nullable|string',
             'especialidade' => 'nullable|string',
-            'periodo' => 'nullable|string',
+            'horario' => 'nullable|date_format:H:i|after_or_equal:07:00|before_or_equal:20:00',
             'data_consulta' => 'nullable|date',
             'status' => 'nullable|string' // Adicionado para validação
         ]);
@@ -84,7 +84,7 @@ class ConsultaController extends Controller
             'nome' => 'required|string|max:255',
             'crm' => 'nullable|string',
             'especialidade' => 'nullable|string',
-            'periodo' => 'nullable|string',
+            'horario' => 'nullable|string',
             'data_consulta' => 'nullable|date',
             'status' => 'nullable|string' // Adicionado para validação
         ]);

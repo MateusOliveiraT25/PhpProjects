@@ -2,47 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Agendamento;
 use App\Models\Consulta;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgendamentoController extends Controller
 {
-    // Exibir o formulário de agendamento
-    public function create($consulta_id)
-    {
-        $consulta = Consulta::findOrFail($consulta_id);
-        return view('agendamentos.create', compact('consulta'));
-    }
-
-    // Processar o agendamento
+    // Método para agendar uma consulta
     public function store(Request $request)
     {
+        // Validar o ID da consulta
         $request->validate([
             'consulta_id' => 'required|exists:consultas,id',
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'data_agendamento' => 'required|date',
         ]);
+    
+        // Obter o ID do usuário autenticado
+        $userId = Auth::id();
+    
+        // Obter o ID da consulta do request
+        $consultaId = $request->input('consulta_id');
+    
+        // Obter a consulta correspondente
+        $consulta = Consulta::findOrFail($consultaId);
+    
+        // Verificar se a consulta está disponível
+        if (!$consulta->disponivel) {
+            return redirect()->back()->with('error', 'A consulta não está mais disponível.');
+        }
+    
+        // Criar o agendamento
+        Agendamento::create([
+            'consulta_id' => $consultaId,
+            'user_id' => $userId,
+            'data_agendamento' => now(), // Definindo a data do agendamento
+        ]);
+    
+        // Marcar a consulta como não disponível
+        $consulta->update(['disponivel' => false]);
+    
+        return redirect()->route('home')->with('success', 'Consulta agendada com sucesso.');
+    }
+    
+    
 
-        Agendamento::create($request->all());
+    // Método para listar os agendamentos do usuário autenticado
+    public function meusAgendamentos()
+    {
+        // Obter o ID do usuário autenticado
+        $userId = Auth::id();
 
-        return redirect()->route('consultas.index')->with('success', 'Consulta agendada com sucesso.');
+        // Buscar os agendamentos desse usuário
+        $agendamentos = Agendamento::where('user_id', $userId)
+                                   ->with('consulta') // Assegure-se de que a relação está definida no modelo Agendamento
+                                   ->get();
+
+        // Retornar a view com os agendamentos
+        return view('agendamentos.meus_agendamentos', compact('agendamentos'));
     }
 
-    // Mostrar um agendamento específico
-    public function show($id)
-    {
-        $agendamento = Agendamento::findOrFail($id);
-        return view('agendamentos.show', compact('agendamento'));
-    }
 
-    // Excluir um agendamento
-    public function destroy($id)
+    public function cancel($id)
     {
         $agendamento = Agendamento::findOrFail($id);
+
+        // Marcar consulta como disponível novamente
+        $consulta = $agendamento->consulta;
+        $consulta->disponivel = true;
+        $consulta->save();
+
+        // Excluir o agendamento
         $agendamento->delete();
 
-        return redirect()->route('consultas.index')->with('success', 'Agendamento excluído com sucesso.');
+        return redirect()->route('home')->with('success', 'Agendamento cancelado com sucesso.');
     }
 }

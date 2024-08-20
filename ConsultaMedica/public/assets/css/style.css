@@ -26,6 +26,13 @@ header .btn-logout {
     color: white;
 }
 
+footer {
+    
+    color: #080302;
+    text-align: center;
+    padding: 20px;
+}
+
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -105,4 +112,19 @@ header .btn-logout {
 .btn-sm {
     padding: 0.25rem 0.5rem; /* Padding ajustado para botões pequenos */
     font-size: 0.875rem; /* Tamanho da fonte para botões pequenos */
+}
+
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 300px; /* Ajuste a altura conforme necessário */
+    overflow: hidden; /* Garante que o conteúdo que ultrapassar o contêiner seja ocultado */
+}
+
+.banner img {
+    width: 100%;
+    height: 100%; /* Ajusta a altura da imagem para preencher o contêiner */
+    object-fit: cover; /* Mantém a proporção da imagem e cobre o contêiner */
+    
 }

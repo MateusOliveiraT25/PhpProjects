@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('nome')->nullable();
             $table->text('crm');
             $table->string('especialidade');        
-            $table->string('periodo'); // Novo campo
-            $table->date('data_consulta'); // Novo campo
+            $table->time('horario')->nullable(); // Tipo time
+            $table->date('data_consulta'); // Campo para data da consulta
             $table->enum('status', ['agendado', 'cancelado', 'concluido', 'pendente'])->default('agendado');
+            $table->boolean('disponivel')->default(true); // Campo para disponibilidade
             $table->timestamps();
         });
     }

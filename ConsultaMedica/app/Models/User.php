@@ -49,7 +49,7 @@ class User extends Authenticatable
 
 
    // Verifica se o usuário é um medico
-   public function isAdmin()
+   public function isMedico()
    {
        return $this->tipo_usuario === 'medico';
    }
