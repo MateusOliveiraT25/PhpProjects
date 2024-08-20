@@ -51,18 +51,22 @@ class UserController extends Controller
            'password.required' => 'O campo senha é obrigatório.',
            'password.min' => 'A senha deve ter no mínimo 8 caracteres.',
            'password.confirmed' => 'A confirmação da senha não corresponde.',
+           'telefone.required' => 'O campo telefone é obrigatório.',
+           'telefone.numeric' => 'O telefone deve ser um número válido.',
        ];
 
        $request->validate([
            'name' => 'required|string|max:255',
            'email' => 'required|string|email|max:255|unique:users',
            'password' => 'required|string|min:8|confirmed',
+           'telefone' => 'required|numeric',
        ], $messages);
 
        $user = User::create([
            'name' => $request->name,
            'email' => $request->email,
            'password' => Hash::make($request->password),
+           'telefone' => $request->telefone,
        ]);
 
        return redirect('/login');

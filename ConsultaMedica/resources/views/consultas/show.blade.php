@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br><br><br><br>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -8,24 +9,21 @@
                 @if($consulta->img)
                     <img src="{{ asset('storage/images/' . $consulta->img) }}" class="img-fluid" alt="{{ $consulta->nome }}">
                 @else
-                    <img src="{{ asset('assets/img/img0.png') }}" class="img-fluid" alt="{{ $consulta->nome }}">
+                    <img src="{{ asset('assets/img/img0.png') }}" class="img-fluid" alt="Imagem padrão">
                 @endif
             </div>
+            
             <div class="col-md-6">
-                <h2>{{ $consulta->nome }}</h2>
-                <p><strong>Categoria:</strong> {{ $consulta->categoria }}</p>
-                <p><strong>Descrição:</strong> {{ $consulta->descricao }}</p>
-                <p><strong>Fabricante:</strong> {{ $consulta->fabricante }}</p>
-                <p><strong>Data de Validade:</strong> {{ \Carbon\Carbon::parse($consulta->data_validade)->format('d/m/Y') }}</p>
-                <p><strong>Preço:</strong> R$ {{ number_format($consulta->preco, 2, ',', '.') }}</p>
+                <h2>Dr:{{ $consulta->nome }}</h2>
+               <p><strong>Especialidade:</strong> {{ $consulta->especialidade }}</p>
+                <p><strong>CRM:</strong> {{ $consulta->crm }}</p>
+                <p><strong>Data da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->data_validade)->format('d/m/Y') }}</p>
+               
 
-                <form method="POST" action="{{ route('carrinho.add', $consulta->id) }}">
+                <form method="POST" action="{{ route('agendamento.store', $consulta->id) }}">
                     @csrf
-                    <div class="form-group">
-                        <label for="quantidade">Selecione a quantidade:</label>
-                        <input type="number" name="quantidade" id="quantidade" class="form-control" min="1" value="1">
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Adicionar ao Carrinho</button>
+                   
+                    <button type="submit" class="btn btn-primary mt-3">Agendar consulta</button>
                 </form>
             </div>
         </div>

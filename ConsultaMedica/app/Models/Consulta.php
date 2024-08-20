@@ -11,8 +11,8 @@ class Consulta extends Model
 
     protected $fillable = [
         'nome',
-        'descricao',
-        'categoria',
+        'crm',
+        'especialidade',
         'periodo',
         'data_consulta', // Adicionado
         'status'

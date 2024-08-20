@@ -32,17 +32,20 @@ class ConsultaController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'descricao' => 'required',
-            'categoria' => 'required',
-            'preco' => 'required|numeric',
-            'quantidade' => 'required|numeric',
-            'fabricante' => 'nullable|string|max:255',
+            'crm' => 'nullable|string',
+            'especialidade' => 'nullable|string',
+            'periodo' => 'nullable|string',
             'data_consulta' => 'nullable|date',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'status' => 'nullable|string' // Adicionado para validação
         ]);
 
         $data = $request->all();
-        
+
+        // Define o status como 'pendente' se não for fornecido
+        if (empty($data['status'])) {
+            $data['status'] = 'pendente';
+        }
+
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -53,7 +56,7 @@ class ConsultaController extends Controller
         Consulta::create($data);
 
         return redirect()->route('consultas.index')
-            ->with('success', 'Remédio criado com sucesso.');
+            ->with('success', 'Consulta criada com sucesso.');
     }
 
     /**
@@ -79,17 +82,15 @@ class ConsultaController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'descricao' => 'required',
-            'categoria' => 'required',
-            'quantidade' => 'required|numeric',
-            'preco' => 'required|numeric',
-            'fabricante' => 'required|nullable|string|max:255',
-            'data_consulta' => 'required|nullable|date',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'crm' => 'nullable|string',
+            'especialidade' => 'nullable|string',
+            'periodo' => 'nullable|string',
+            'data_consulta' => 'nullable|date',
+            'status' => 'nullable|string' // Adicionado para validação
         ]);
 
         $data = $request->all();
-        
+
         if ($request->hasFile('img')) {
             // Delete the old image if it exists
             if ($consulta->img) {
@@ -105,7 +106,7 @@ class ConsultaController extends Controller
         $consulta->update($data);
 
         return redirect()->route('consultas.index')
-            ->with('success', 'Remédio atualizado com sucesso.');
+            ->with('success', 'Consulta atualizada com sucesso.');
     }
 
     /**
@@ -121,6 +122,6 @@ class ConsultaController extends Controller
         $consulta->delete();
 
         return redirect()->route('consultas.index')
-            ->with('success', 'Remédio deletado com sucesso.');
+            ->with('success', 'Consulta deletada com sucesso.');
     }
 }

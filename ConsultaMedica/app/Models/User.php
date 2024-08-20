@@ -20,7 +20,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'endereco',
         'telefone',
         'tipo_usuario',
     ];
@@ -49,7 +48,7 @@ class User extends Authenticatable
     }
 
 
-   // Verifica se o usuário é um administrador
+   // Verifica se o usuário é um medico
    public function isAdmin()
    {
        return $this->tipo_usuario === 'medico';

@@ -5,7 +5,7 @@
 
     <div class="container">
         <!-- Seção de Remédios -->
-        <h1>Remédios Disponíveis</h1>
+        <h1>Consultas Disponíveis</h1>
         <div class="row">
             @foreach ($consultas as $consulta)
                 <div class="col-md-4 mb-4">
@@ -18,11 +18,11 @@
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $consulta->nome }}</h5>
-                            <p class="card-text">{{ $consulta->descricao }}</p>
+                            <p class="card-text">{{ $consulta->crm }}</p>
                             <p class="card-text">Preço: R$ {{ number_format($consulta->preco, 2, ',', '.') }}</p>
                             <p class="card-text">Fabricante: {{ $consulta->fabricante }}</p>
                             <!-- Botão para visualizar detalhes do remédio -->
-                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-primary">Ver Remédio</a>
+                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-primary">Ver Consulta</a>
                         </div>
                     </div>
                 </div>

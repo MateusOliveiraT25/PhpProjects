@@ -12,7 +12,7 @@ class DashboardController extends Controller
         $search = $request->input('search');
         $consultas = Consulta::when($search, function ($query, $search) {
             return $query->where('nome', 'like', "%{$search}%")
-                         ->orWhere('descricao', 'like', "%{$search}%")
+                         ->orWhere('crm', 'like', "%{$search}%")
                          ->orWhere('fabricante', 'like', "%{$search}%");
         })->get();
 

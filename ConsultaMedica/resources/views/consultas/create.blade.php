@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="my-4">Criar Remédio</h1>
+        <h1 class="my-4">Criar Consulta</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -20,46 +20,35 @@
 
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" class="form-control" placeholder="Nome">
+                <input type="text" name="nome" class="form-control" placeholder="Nome" value="{{ old('nome') }}">
             </div>
 
             <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea name="descricao" class="form-control" placeholder="Descrição"></textarea>
+                <label for="crm">CRM:</label>
+                <textarea name="crm" class="form-control" placeholder="CRM">{{ old('crm') }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="categoria">Categoria:</label>
-                <input type="text" name="categoria" class="form-control" placeholder="Categoria">
+                <label for="especialidade">Especialidade:</label>
+                <input type="text" name="especialidade" class="form-control" placeholder="Especialidade" value="{{ old('especialidade') }}">
             </div>
 
             <div class="form-group">
-                <label for="quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" class="form-control" placeholder="Quantidade">
+                <label for="periodo">Período:</label>
+                <input type="text" name="periodo" class="form-control" placeholder="Período" value="{{ old('periodo') }}">
             </div>
 
             <div class="form-group">
-                <label for="preco">Preço:</label>
-                <input type="text" name="preco" class="form-control" placeholder="Preço">
+                <label for="data_consulta">Data da Consulta:</label>
+                <input type="date" name="data_consulta" class="form-control" value="{{ old('data_consulta') }}">
             </div>
 
-            <!-- Campo Fabricante -->
             <div class="form-group">
-                <label for="fabricante">Fabricante:</label>
-                <input type="text" name="fabricante" class="form-control" placeholder="Fabricante">
+                <label for="status">Status:</label>
+                <input type="text" name="status" class="form-control" placeholder="Status" value="{{ old('status', 'agendado') }}">
             </div>
 
-            <!-- Campo Data de Validade -->
-            <div class="form-group">
-                <label for="data_validade">Data de Validade:</label>
-                <input type="date" name="data_validade" class="form-control">
-            </div>
-
-            <!-- Campo Imagem -->
-            <div class="form-group">
-                <label for="img">Imagem:</label>
-                <input type="file" name="img" class="form-control">
-            </div>
+         
 
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

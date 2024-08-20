@@ -25,6 +25,14 @@
         </div>
 
         <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="telefone" name="telefone" class="form-control" required value="{{ old('telefone') }}">
+            @if ($errors->has('telefone'))
+                <small class="text-danger">{{ $errors->first('telefone') }}</small>
+            @endif
+        </div>
+
+        <div class="form-group">
             <label for="password">Senha</label>
             <input type="password" name="password" class="form-control" required>
             @if ($errors->has('password'))

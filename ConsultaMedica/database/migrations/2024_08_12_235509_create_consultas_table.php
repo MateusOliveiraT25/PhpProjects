@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
             $table->string('nome')->nullable();
-            $table->text('descricao');
-            $table->string('categoria');        
+            $table->text('crm');
+            $table->string('especialidade');        
             $table->string('periodo'); // Novo campo
             $table->date('data_consulta'); // Novo campo
-            $table->enum('status', ['agendado', 'cancelado', 'concluido', 'pendente'])->default('pendente');
+            $table->enum('status', ['agendado', 'cancelado', 'concluido', 'pendente'])->default('agendado');
             $table->timestamps();
         });
     }

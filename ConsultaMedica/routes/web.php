@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\AgendamentoController;
 use App\Http\Middleware\ConsultasMiddleware;
 
 
@@ -40,4 +41,6 @@ Route::resource('consultas', ConsultaController::class)->middleware(ConsultasMid
 //routa consulta especifico
 Route::get('consultas/{consulta}', [ConsultaController::class, 'show'])->middleware('auth')->name('consultas.show');
 
-Route::post('carrinho/add{consulta}',[CarrinhoController::class, 'add'])->middleware('auth')->name('carrinho.add');
+Route::post('agendamentos', [AgendamentoController::class, 'store'])->name('agendamento.store');
+Route::get('agendamentos/{id}', [AgendamentoController::class, 'show'])->name('agendamento.show');
+Route::delete('agendamentos/{id}', [AgendamentoController::class, 'destroy'])->name('agendamento.destroy');

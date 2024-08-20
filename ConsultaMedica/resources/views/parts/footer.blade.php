@@ -8,7 +8,7 @@
     <!-- Rodapé -->
     <footer class="footer mt-5 py-3">
         <div class="container text-center">
-            <p class="mb-0">© 2024 Farmácia. Todos os direitos reservados.</p>
+            <p class="mb-0">© 2024 Consulta médica. Todos os direitos reservados.</p>
         </div>
     </footer>
 </div>
