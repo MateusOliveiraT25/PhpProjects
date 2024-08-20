@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgendamentoController;
 use App\Http\Middleware\ConsultasMiddleware;
-
+use App\Http\Middleware\AgendamentosMiddleware;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -41,16 +41,22 @@ Route::resource('consultas', ConsultaController::class)->middleware(ConsultasMid
 Route::get('consultas/{consulta}', [ConsultaController::class, 'show'])->middleware('auth')->name('consultas.show');
 
 
+/// Aplicar middleware 'agendamentos' ao grupo de rotas relacionadas a agendamentos
+Route::middleware([AgendamentosMiddleware::class])->group(function () {
 
-// Rota para armazenar o agendamento
-Route::post('/consultas/{consulta}/agendar', [AgendamentoController::class, 'store'])->name('agendamento.store');
+    // Rota para armazenar o agendamento de uma consulta
+    Route::post('/consultas/{consulta}/agendar', [AgendamentoController::class, 'store'])
+        ->name('agendamento.store');
 
+    // Rota para exibir os agendamentos do usuário
+    Route::get('/meus-agendamentos', [AgendamentoController::class, 'meusAgendamentos'])
+        ->name('agendamentos.meus');
 
-// routes/web.php
-Route::get('/meus-agendamentos', [AgendamentoController::class, 'meusAgendamentos'])->name('agendamentos.meus');
+    // Rota para criar um novo agendamento
+    Route::post('/agendamentos', [AgendamentoController::class, 'store'])
+        ->name('agendamentos.store');
 
-
-// routes/web.php
-Route::post('agendamentos', [AgendamentoController::class, 'store'])->name('agendamentos.store');
-
-Route::delete('/agendamentos/{id}/cancel', [AgendamentoController::class, 'cancel'])->name('agendamentos.cancel');
+    // Rota para cancelar um agendamento
+    Route::delete('/agendamentos/{id}/cancel', [AgendamentoController::class, 'cancel'])
+        ->name('agendamentos.cancel');
+});

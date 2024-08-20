@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+
 class ConsultasMiddleware
 {
     /**
@@ -16,13 +16,10 @@ class ConsultasMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->isMedico()) {
             return $next($request);
         }
     
         return redirect('/')->withErrors('Acesso negado -> Você não tem permissão.');
-
     }
-    
-
 }
