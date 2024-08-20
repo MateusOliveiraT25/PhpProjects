@@ -30,9 +30,9 @@
                             <h5 class="card-title">Médico(a): {{ $consulta->nome }}</h5>
                             <p class="card-text">CRM: {{ $consulta->crm }}</p>
                             <p class="card-text">Especialidade: {{ $consulta->especialidade }}</p>
-                            <p class="card-text">Horário da consulta: {{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</p>
                             <p class="card-text">Data da Consulta: {{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</p>
-
+                            <p class="card-text">Horário da consulta: {{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</p>
+                           
                             <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-primary">Ver Consulta</a>
                         </div>
                     </div>

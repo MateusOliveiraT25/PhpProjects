@@ -15,10 +15,14 @@ class DashboardController extends Controller
         // Filtrar consultas disponíveis e aplicar busca, se houver
         $consultas = Consulta::where('disponivel', true)
             ->when($search, function ($query, $search) {
-                // Filtragem por nome ou CRM
+                // Converter o termo de busca para minúsculas
+                $search = strtolower($search);
+
                 $query->where(function ($query) use ($search) {
-                    $query->where('nome', 'like', "%{$search}%")
-                          ->orWhere('crm', 'like', "%{$search}%");
+                    // Filtragem por nome, CRM ou especialidade, todos em minúsculas
+                    $query->whereRaw('LOWER(nome) LIKE ?', ["%{$search}%"])
+                          ->orWhereRaw('LOWER(crm) LIKE ?', ["%{$search}%"])
+                          ->orWhereRaw('LOWER(especialidade) LIKE ?', ["%{$search}%"]);
                 });
                 
                 // Verificar se a busca é uma data válida
