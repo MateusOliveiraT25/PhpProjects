@@ -4,7 +4,18 @@
     <br><br><br>
     <div class="container">
         <h1 class="mb-4">Consultas Disponíveis</h1>
+    <div class="container">
+        <h1 class="mb-4">Consultas Disponíveis</h1>
 
+        <!-- Formulário de Pesquisa -->
+        <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control form-control-lg" placeholder="Pesquisar consultas..." value="{{ request('search') }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary btn-lg">Pesquisar</button>
+                </div>
+            </div>
+        </form>
         <!-- Formulário de Pesquisa -->
         <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
             <div class="input-group">
