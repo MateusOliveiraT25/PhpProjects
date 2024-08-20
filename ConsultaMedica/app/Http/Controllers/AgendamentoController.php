@@ -60,4 +60,20 @@ class AgendamentoController extends Controller
         // Retornar a view com os agendamentos
         return view('agendamentos.meus_agendamentos', compact('agendamentos'));
     }
+
+
+    public function cancel($id)
+    {
+        $agendamento = Agendamento::findOrFail($id);
+
+        // Marcar consulta como disponível novamente
+        $consulta = $agendamento->consulta;
+        $consulta->disponivel = true;
+        $consulta->save();
+
+        // Excluir o agendamento
+        $agendamento->delete();
+
+        return redirect()->route('home')->with('success', 'Agendamento cancelado com sucesso.');
+    }
 }

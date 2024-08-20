@@ -52,3 +52,5 @@ Route::get('/meus-agendamentos', [AgendamentoController::class, 'meusAgendamento
 
 // routes/web.php
 Route::post('agendamentos', [AgendamentoController::class, 'store'])->name('agendamentos.store');
+
+Route::delete('/agendamentos/{id}/cancel', [AgendamentoController::class, 'cancel'])->name('agendamentos.cancel');

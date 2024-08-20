@@ -23,6 +23,7 @@
                     <th>Data da Consulta</th>
                     <th>Horário da Consulta</th>
                     <th>Data do Agendamento</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,10 +33,17 @@
                         <td>{{ \Carbon\Carbon::parse($agendamento->consulta->data_consulta)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($agendamento->consulta->horario)->format('H:i') }}</td>
                         <td>{{ \Carbon\Carbon::parse($agendamento->data_agendamento)->format('d/m/Y H:i') }}</td>
+                        <td>
+                            <form method="POST" action="{{ route('agendamentos.cancel', $agendamento->id) }}" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja cancelar este agendamento?')">Cancelar</button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center">Nenhum agendamento encontrado.</td>
+                        <td colspan="5" class="text-center">Nenhum agendamento encontrado.</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<br><br><br><br>
+    <br><br><br><br>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -14,15 +14,13 @@
             </div>
             
             <div class="col-md-6">
-                <h2>Dr:{{ $consulta->nome }}</h2>
-               <p><strong>Especialidade:</strong> {{ $consulta->especialidade }}</p>
-                <p><strong>CRM:</strong> {{ $consulta->crm }}</p>
-                <p><strong>Data da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->data_validade)->format('d/m/Y') }}</p>
-               
+                <h2>Médico(a): {{ $consulta->nome }}</h2>
+                <p><strong>Especialidade:</strong> {{ $consulta->especialidade }}</p>
+                <p><strong>Data da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</p>
+                <p><strong>Horário da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</p>
 
                 <form method="POST" action="{{ route('agendamento.store', $consulta->id) }}">
                     @csrf
-                   
                     <button type="submit" class="btn btn-primary mt-3">Agendar consulta</button>
                 </form>
             </div>
