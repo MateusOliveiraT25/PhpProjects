@@ -3,19 +3,26 @@
 @section('content')
     <br><br><br>
     <div class="container">
-        <h1 class="mb-4">Consultas Disponíveis</h1>
-    <div class="container">
-        <h1 class="mb-4">Consultas Disponíveis</h1>
-
-        <!-- Formulário de Pesquisa -->
-        <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control form-control-lg" placeholder="Pesquisar consultas..." value="{{ request('search') }}">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary btn-lg">Pesquisar</button>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <!-- Área de Usuário -->
+                <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
+                    <div>
+                        <h5>Bem-vindo(a), {{ Auth::user()->name }}!</h5>
+                        <p class="mb-0">Tipo de Usuário: <strong>{{ Auth::user()->tipo_usuario }}</strong></p>
+                    </div>
+                    <div>
+                        <!-- Botão para acessar o perfil ou fazer logout -->
+                        <a href="{{ route('profile') }}" class="btn btn-outline-primary btn-sm">Perfil</a>
+                        <a href="{{ route('user.logout') }}" class="btn btn-outline-danger btn-sm"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                           Logout
+                        </a>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
+
         <!-- Formulário de Pesquisa -->
         <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
             <div class="input-group">
@@ -32,7 +39,6 @@
                 @foreach ($consultas->where('disponivel', true) as $consulta)
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm border-light">
-                            <!-- Verifica se a imagem existe e se é válida -->
                             @if($consulta->img)
                                 <img src="{{ asset('storage/images/' . $consulta->img) }}" class="card-img-top" alt="{{ $consulta->nome }}">
                             @else
@@ -59,4 +65,9 @@
             @endif
         </div>
     </div>
+
+    <!-- Formulário de Logout -->
+    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 @endsection

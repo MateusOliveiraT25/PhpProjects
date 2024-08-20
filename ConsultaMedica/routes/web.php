@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgendamentoController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\ConsultasMiddleware;
 use App\Http\Middleware\AgendamentosMiddleware;
 use App\Http\Middleware\DashboardMiddleware;
@@ -60,4 +61,11 @@ Route::middleware([AgendamentosMiddleware::class])->group(function () {
     // Rota para cancelar um agendamento
     Route::delete('/agendamentos/{id}/cancel', [AgendamentoController::class, 'cancel'])
         ->name('agendamentos.cancel');
+
+// Rota para o perfil do usuário
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth')->name('profile');
+
+
+Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
+
 });

@@ -29,6 +29,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/meus-agendamentos">Meus Agendamentos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile') }}">Perfil</a>
+                        </li>
                     @endif
                 </ul>
 
