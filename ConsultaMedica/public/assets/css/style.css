@@ -1,0 +1,108 @@
+header {
+    background-color: #e0f7fa; /* Cor de fundo suave, um verde azulado claro */
+    color: #004d40; /* Cor do texto em verde escuro para contraste */
+    padding: 10px 0; /* Padding ajustado para mais espaço */
+    height: 70px; /* Altura ligeiramente maior para acomodar melhor o conteúdo */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #004d40; /* Borda inferior para um toque adicional */
+}
+
+header .navbar-brand {
+    font-size: 1.5rem; /* Tamanho da fonte ajustado para um visual mais destacado */
+    font-weight: bold; /* Negrito para o nome da farmácia */
+}
+
+header .btn {
+    padding: 8px 12px; /* Padding ajustado para os botões */
+    font-size: 0.9rem; /* Tamanho da fonte ligeiramente maior */
+}
+
+header .btn-logout {
+    background-color: #ff5722; /* Cor de fundo para o botão de logout em laranja */
+    border: none;
+    color: white;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-text {
+    margin-right: 20px; /* Espaçamento aumentado entre o texto do usuário e o botão de logout */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Espaçamento aumentado para itens de navegação em telas menores */
+    }
+}
+
+.card-custom {
+    width: 100%;
+    max-width: 300px; /* Define uma largura máxima para os cartões */
+    margin: auto; /* Centraliza os cartões */
+}
+
+.card-custom .card-title {
+    font-size: 1.2rem; /* Tamanho da fonte do título do cartão */
+}
+
+.card-custom .card-text {
+    font-size: 0.9rem; /* Tamanho da fonte do texto do cartão */
+}
+
+.card-custom .btn-sm {
+    padding: 0.25rem 0.5rem; /* Ajusta o padding do botão pequeno */
+    font-size: 0.875rem; /* Tamanho da fonte do botão pequeno */
+}
+
+
+/* Botões principais */
+.btn-primary {
+    background-color: #004d40; /* Verde escuro, adequado para farmácia */
+    border-color: #004d40; /* Mantém a borda na mesma cor do fundo */
+}
+
+.btn-primary:hover {
+    background-color: #00332e; /* Tom mais escuro do verde para hover */
+    border-color: #00332e; /* Cor da borda para o estado hover */
+}
+
+.btn-secondary {
+    background-color: #b2dfdb; /* Verde claro, suave para botões secundários */
+    border-color: #b2dfdb; /* Cor da borda do botão secundário */
+}
+
+.btn-secondary:hover {
+    background-color: #8aafa0; /* Tom mais escuro para o hover do botão secundário */
+    border-color: #8aafa0; /* Cor da borda para o estado hover do botão secundário */
+}
+
+/* Botão de logout específico */
+.btn-logout {
+    background-color: #ff5722; /* Laranja para destaque */
+    border: none;
+    color: white;
+}
+
+.btn-logout:hover {
+    background-color: #e64a19; /* Tom mais escuro de laranja para hover */
+}
+
+/* Botões menores */
+.btn-sm {
+    padding: 0.25rem 0.5rem; /* Padding ajustado para botões pequenos */
+    font-size: 0.875rem; /* Tamanho da fonte para botões pequenos */
+}
