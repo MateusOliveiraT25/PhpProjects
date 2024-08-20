@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- Nome da loja -->
-            <a class="navbar-brand" href="#">Consultas</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Consultas</a>
+
 
             <!-- Botão para alternar o menu em telas menores -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
