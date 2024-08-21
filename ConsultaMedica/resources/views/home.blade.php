@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5"><br><br>
-        <h1 class="mb-4">Consultas Disponíveis</h1>
+        <h1 class="mb-4 text-center">Consultas Disponíveis</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -57,10 +57,10 @@
                     </tbody>
                 </table>
             @else
-                <p class="text-muted">Não há consultas disponíveis no momento.</p>
+                <p class="text-muted text-center">Não há consultas disponíveis no momento.</p>
             @endif
         @else
-            <p class="text-muted">Você precisa estar logado para visualizar as consultas.</p>
+            <p class="text-muted text-center">Você precisa estar logado para visualizar as consultas.</p>
         @endauth
     </div>
 @endsection

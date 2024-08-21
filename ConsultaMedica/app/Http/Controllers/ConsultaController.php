@@ -79,35 +79,24 @@ class ConsultaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Consulta $consulta)
-    {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'crm' => 'nullable|string',
-            'especialidade' => 'nullable|string',
-            'horario' => 'nullable|string',
-            'data_consulta' => 'nullable|date',
-            'status' => 'nullable|string' // Adicionado para validação
-        ]);
+{
+    // Validação dos dados recebidos
+    $validatedData = $request->validate([
+        'nome' => 'required|string|max:255',
+        'crm' => 'nullable|string',
+        'especialidade' => 'nullable|string',
+        'horario' => 'nullable|string|date_format:H:i|after_or_equal:07:00|before_or_equal:20:00',
+        'data_consulta' => 'nullable|date|after_or_equal:today',
+        'status' => 'nullable|string'
+    ]);
 
-        $data = $request->all();
+    // Atualiza o objeto Consulta com os dados validados
+    $consulta->update($validatedData);
 
-        if ($request->hasFile('img')) {
-            // Delete the old image if it exists
-            if ($consulta->img) {
-                Storage::delete('public/images/' . $consulta->img);
-            }
+    // Redireciona com mensagem de sucesso
+    return redirect()->route('consultas.index')->with('success', 'Consulta atualizada com sucesso!');
+}
 
-            $file = $request->file('img');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/images', $filename);
-            $data['img'] = $filename;
-        }
-
-        $consulta->update($data);
-
-        return redirect()->route('consultas.index')
-            ->with('success', 'Consulta atualizada com sucesso.');
-    }
 
     /**
      * Remove the specified resource from storage.

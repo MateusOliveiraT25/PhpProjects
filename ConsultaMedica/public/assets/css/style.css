@@ -27,12 +27,15 @@ header .btn-logout {
 }
 
 footer {
-    
     color: #080302;
     text-align: center;
     padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+   
+    
 }
-
 .navbar-nav {
     display: flex;
     align-items: center;

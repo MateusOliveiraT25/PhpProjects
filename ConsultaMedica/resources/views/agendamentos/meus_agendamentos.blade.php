@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5"><br><br>
+    <br><br><br>
+    <div class="container">
         <h1 class="mb-4">Meus Agendamentos</h1>
 
         <!-- Verifique se há mensagens de sucesso ou erro -->
@@ -16,7 +17,7 @@
         @endif
 
         <!-- Verifica se há agendamentos -->
-        @if($agendamentos->isNotEmpty())
+        @if ($agendamentos->count() > 0)
             <!-- Tabela de agendamentos -->
             <table class="table table-striped">
                 <thead>
@@ -34,7 +35,8 @@
                             <td>{{ $agendamento->consulta->nome }}</td>
                             <td>{{ \Carbon\Carbon::parse($agendamento->consulta->data_consulta)->format('d/m/Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($agendamento->consulta->horario)->format('H:i') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($agendamento->data_agendamento)->format('d/m/Y H:i') }}</td>
+                            <!-- Exibe somente a data do agendamento -->
+                            <td>{{ \Carbon\Carbon::parse($agendamento->data_agendamento)->format('d/m/Y') }}</td>
                             <td>
                                 <form method="POST" action="{{ route('agendamentos.cancel', $agendamento->id) }}" style="display:inline;">
                                     @csrf
@@ -47,7 +49,6 @@
                 </tbody>
             </table>
         @else
-            <!-- Exibe uma mensagem quando não há agendamentos -->
             <div class="alert alert-info text-center">
                 Nenhum agendamento encontrado.
             </div>
