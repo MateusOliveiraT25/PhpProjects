@@ -42,8 +42,8 @@
                 <ul class="navbar-nav ms-auto">
                     @if (Auth::check())
                         <li class="nav-item">
-                            <span class="navbar-text">
-                                {{ Auth::user()->name }} ({{ Auth::user()->tipo_usuario }})
+                            <span class="navbar-text"> <!-- ucfirst() transforma a primeira letra da string em maiúscula -->
+                                {{{ ucfirst (Auth::user()->name) }}} ({{ ucfirst(Auth::user()->tipo_usuario) }})
                             </span>
                         </li>
                         <li class="nav-item">

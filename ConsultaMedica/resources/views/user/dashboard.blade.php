@@ -8,8 +8,8 @@
                 <!-- Área de Usuário -->
                 <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
                     <div>
-                        <h5>Bem-vindo(a), {{ Auth::user()->name }}!</h5>
-                        <p class="mb-0">Tipo de Usuário: <strong>{{ Auth::user()->tipo_usuario }}</strong></p>
+                        <h5>Bem-vindo(a),  {{{ ucfirst (Auth::user()->name) }}}!</h5><!-- ucfirst() transforma a primeira letra da string em maiúscula -->
+                   
                     </div>
                     <div>
                         <!-- Botão para acessar o perfil ou fazer logout -->

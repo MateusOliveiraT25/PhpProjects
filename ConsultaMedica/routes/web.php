@@ -13,6 +13,7 @@ use App\Http\Middleware\DashboardMiddleware;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
 Route::get('/registro', [UserController::class, 'showRegistroForm'])->name('user.registro');//showRegistroForm
 
 

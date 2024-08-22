@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 header {
     background-color: #e0f7fa; /* Cor de fundo suave, um verde azulado claro */
     color: #004d40; /* Cor do texto em verde escuro para contraste */
@@ -26,15 +32,31 @@ header .btn-logout {
     color: white;
 }
 
-footer {
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #f1f1f1;
     color: #080302;
     text-align: center;
     padding: 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-   
-    
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer a {
+    color: #080302;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
 .navbar-nav {
     display: flex;
