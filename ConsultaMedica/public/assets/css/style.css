@@ -43,15 +43,15 @@ header .btn-logout {
 }
 
 .footer {
-    background-color: #f1f1f1;
-    color: #080302;
+    background-color: #555353;
+    color: #fcfcfc;
     text-align: center;
     padding: 20px;
     border-top: 1px solid #e0e0e0;
 }
 
 .footer a {
-    color: #080302;
+    color: #fcfcfc;
     text-decoration: none;
 }
 
