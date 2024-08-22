@@ -4,7 +4,7 @@
     <br><br><br>
     <div class="container">
         <div class="row mb-4">
-            <div class="col-md-12">
+            <div class="col-md-12"><br><br>
                 <!-- Área de Usuário -->
                 <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
                     <div>

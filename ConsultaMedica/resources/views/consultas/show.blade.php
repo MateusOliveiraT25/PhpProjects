@@ -24,7 +24,19 @@
                 <p><strong>Especialidade:</strong> {{ $consulta->especialidade }}</p>
                 <p><strong>Data da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</p>
                 <p><strong>Horário da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</p>
+                <p><strong>Local da consulta:</strong> {{ $consulta->local }}</p>
 
+                <!-- Instruções para o dia da consulta -->
+                <h5>Instruções para o dia da consulta:</h5>
+                <ul>
+                    <li>Chegar ao local com pelo menos 15 minutos de antecedência.</li>
+                    <li>Trazer um documento de identidade com foto e o cartão do plano de saúde (se aplicável).</li>
+                    <li>Manter o uso de máscara nas dependências do consultório.</li>
+                    <li>Se necessário, traga seus exames médicos ou outros documentos relevantes.</li>
+                    <li>Caso precise cancelar, informe com pelo menos 24 horas de antecedência.</li>
+                </ul>
+
+                <!-- Botão para agendar consulta -->
                 <form method="POST" action="{{ route('agendamentos.store') }}">
                     @csrf
                     <input type="hidden" name="consulta_id" value="{{ $consulta->id }}">

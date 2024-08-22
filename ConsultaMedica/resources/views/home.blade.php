@@ -29,7 +29,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Médico</th>
+                            <th>Médico(a)</th>
                             <th>Especialidade</th>
                             <th>Data da Consulta</th>
                             <th>Horário</th>
