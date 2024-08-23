@@ -30,8 +30,8 @@ name('user.login');
 // Rota para logout
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 
-
-
+Route::get('/ajuda', function () { return view('ajuda');})->name('ajuda');
+Route::get('/termos_servicos', function () { return view('termos_servicos');})->name('termos_servicos');
 
 // Rota para o dashboard, protegida por autenticação
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(DashboardMiddleware::class)->name('dashboard');
@@ -69,7 +69,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth')-
 
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
 
-Route::get('/ajuda', function () { return view('ajuda');})->name('ajuda');
+
    
 
 

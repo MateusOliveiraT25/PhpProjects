@@ -10,7 +10,7 @@
                 <p class="mb-0">© 2024 Consulta Médica. Todos os direitos reservados.</p>
                 <div class="mt-2">
                     <a href="#" class="mr-3">Política de Privacidade</a>
-                    <a href="#" class="mr-3">Termos de Serviço</a>
+                    <a href="{{ route('termos_servicos') }}" class="mr-3">Termos de Serviço</a>
                     <a href="#" class="mr-3">Contato</a>
                     <a href="{{ route('ajuda') }}" class="mr-3">Ajuda</a>
                     <a href="https://facebook.com" target="_blank" class="mr-3">
