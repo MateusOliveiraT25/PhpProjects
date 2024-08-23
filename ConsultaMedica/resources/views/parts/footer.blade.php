@@ -12,6 +12,7 @@
                     <a href="#" class="mr-3">Política de Privacidade</a>
                     <a href="#" class="mr-3">Termos de Serviço</a>
                     <a href="#" class="mr-3">Contato</a>
+                    <a href="{{ route('ajuda') }}" class="mr-3">Ajuda</a>
                     <a href="https://facebook.com" target="_blank" class="mr-3">
                         <i class="fab fa-facebook-f"></i>
                     </a>

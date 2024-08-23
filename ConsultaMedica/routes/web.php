@@ -69,4 +69,9 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth')-
 
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
 
+Route::get('/ajuda', function () { return view('ajuda');})->name('ajuda');
+   
+
+
+
 });

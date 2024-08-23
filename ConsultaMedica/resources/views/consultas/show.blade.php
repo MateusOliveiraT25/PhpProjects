@@ -24,7 +24,8 @@
                 <p><strong>Especialidade:</strong> {{ $consulta->especialidade }}</p>
                 <p><strong>Data da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y') }}</p>
                 <p><strong>Horário da consulta:</strong> {{ \Carbon\Carbon::parse($consulta->horario)->format('H:i') }}</p>
-                <p><strong>Local da consulta:</strong> {{ $consulta->local }}</p>
+                <p><strong>Local da consulta: </strong>Av. Antonio Ometto, 45 - Vila Claudia, Limeira - SP</p>
+                <p><strong>Telefone: </strong>(19) 3451-6912</p>
 
                 <!-- Instruções para o dia da consulta -->
                 <h5>Instruções para o dia da consulta:</h5>
