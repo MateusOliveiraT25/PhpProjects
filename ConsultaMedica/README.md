@@ -1,66 +1,227 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gerenciamento de Consultas Médicas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Escopo
 
-## About Laravel
+### 1.1 Específicos
+- Automatizar o processo de agendamento de consultas médicas.
+- Implementar autenticação e autorização de usuários.
+- Gerenciar o status das consultas.
+- Disponibilidade de Consultas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1.2 Mensuráveis
+- Reduzir o tempo médio de agendamento de consultas em 50% em comparação com o método manual.
+- Atingir 95% de precisão no gerenciamento de status das consultas.
+- Implementar o sistema com 100% de cobertura de CRUD.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1.3 Atingíveis
+- Desenvolver o sistema em 4 meses.
+- Realizar testes de usabilidade com 10 usuários.
+- Atingir uma taxa de sucesso de login de 98%.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1.4 Relevantes
+- Melhorar a eficiência do atendimento médico.
+- Garantir a segurança dos dados dos pacientes.
+- Aumentar a satisfação dos usuários em pelo menos 20%.
 
-## Learning Laravel
+### 1.5 Temporais
+- **Fase de desenvolvimento:** 4 meses
+  - **Primeiro mês:** Design do banco de dados e implementação do CRUD de usuários.
+  - **Segundo mês:** Desenvolvimento do CRUD de consultas e lógica de autenticação/autorização.
+  - **Terceiro mês:** Implementação de funcionalidades de agendamento, cancelamento e gerenciamento de status de consultas.
+  - **Quarto mês:** Testes de usabilidade, ajustes finais e preparação para o lançamento.
+- **Lançamento da primeira versão:** 1 mês após a conclusão da fase de desenvolvimento.
+- **Revisão e melhorias contínuas:** 6 meses após o lançamento da primeira versão.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Cronograma de Desenvolvimento (4 meses)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Mês 1: Planejamento e Design
+- **Semana 1:**
+  - Reunião de kickoff.
+  - Criação do diagrama ER.
+  - Definição das tecnologias.
+- **Semana 2:**
+  - Design das interfaces UI/UX.
+  - Desenvolvimento do backend e modelo User.
+  - Implementação do CRUD básico para User.
+- **Semana 3:**
+  - Continuação do CRUD de usuários.
+  - Funcionalidades de autenticação e autorização.
+  - Testes iniciais.
+- **Semana 4:**
+  - Finalização do CRUD de usuários.
+  - Design e modelagem do banco de dados para consultas.
+  - Revisão e ajustes.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Mês 2: Desenvolvimento do Módulo de Consultas
+- **Semana 5:**
+  - Implementação do modelo Consulta.
+  - CRUD de consultas.
+  - Relacionamento entre User e Consulta.
+- **Semana 6:**
+  - Funcionalidades de filtragem e busca.
+  - Testes unitários.
+  - Validações de agendamento.
+- **Semana 7:**
+  - Continuação dos testes e correções.
+  - Gerenciamento de status das consultas.
+  - Desenvolvimento da UI para o módulo de consultas.
+- **Semana 8:**
+  - Integração frontend e backend.
+  - Testes de integração.
+  - Revisão e ajustes.
 
-## Laravel Sponsors
+### Mês 3: Funcionalidades Adicionais e Integração
+- **Semana 9:**
+  - Implementação dos modelos Médico e Paciente.
+  - Desenvolvimento da UI para médicos e pacientes.
+- **Semana 10:**
+  - Integração dos modelos Médico e Paciente.
+  - Funcionalidades de notificações.
+  - Testes unitários e de integração.
+- **Semana 11:**
+  - Implementação de receitas médicas.
+  - Feedback dos pacientes.
+  - Testes e correções.
+- **Semana 12:**
+  - Relatórios de consultas e estatísticas.
+  - Revisão final e ajustes de UI/UX.
+  - Preparação para o lançamento.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Mês 4: Testes Finais e Lançamento
+- **Semana 13:**
+  - Testes finais com 10 usuários.
+  - Correção de bugs.
+  - Otimização do desempenho.
+- **Semana 14:**
+  - Ajustes pós-teste.
+  - Revisão da documentação.
+  - Configuração final do ambiente de produção.
+- **Semana 15:**
+  - Lançamento da versão 1.0.
+  - Monitoramento inicial.
+  - Coleta de feedback dos usuários.
+- **Semana 16:**
+  - Revisão de métricas e planejamento de melhorias.
+  - Documentação final.
 
-### Premium Partners
+### Fase Pós-Lançamento (1 mês após o lançamento)
+- **Mês 5:**
+  - Coleta contínua de feedback.
+  - Implementação de melhorias incrementais.
+  - Planejamento para a próxima versão.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 3. Diagrama de Casos de Uso
+- Criar um sistema para agendamento e gerenciamento de consultas médicas que permita:
+  - Agendar, editar e cancelar consultas facilmente.
+  - Gerenciar o status das consultas (agendado, cancelado, concluído, pendente).
+  - Autenticar e autorizar usuários (médicos e pacientes).
+  - Visualizar e agendar consultas disponíveis.
 
-## Contributing
+## 4. Recursos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Recursos Humanos
+- Desenvolvedores: Para o backend e frontend.
+- Designer UI/UX: Para criar as interfaces.
+- Testadores: Para verificar o funcionamento do sistema.
+- Gerente de Projeto: Para coordenar o trabalho.
 
-## Code of Conduct
+### Recursos Tecnológicos
+- Tecnologias: Laravel (PHP), MySQL/PostgreSQL, HTML/CSS, JavaScript.
+- Infraestrutura: Servidores e ferramentas de desenvolvimento.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Recursos Financeiros
+- Orçamento: Para equipe, infraestrutura e ferramentas.
 
-## Security Vulnerabilities
+## 6. Análise de Riscos
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6.1 Riscos Técnicos
+- **Integração e Desempenho:** Problemas podem surgir ao integrar o sistema ou com o desempenho em grande escala.
+  - **Mitigação:** Testar bem a integração e otimizar o desempenho.
 
-## License
+### 6.2 Riscos de Cronograma
+- **Atrasos:** Podem ocorrer atrasos no desenvolvimento.
+  - **Mitigação:** Monitorar o progresso e ajustar o cronograma se necessário.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 6.3 Riscos de Qualidade
+- **Erros e Usabilidade:** Erros no sistema ou problemas de usabilidade.
+  - **Mitigação:** Realizar testes rigorosos e ajustar conforme o feedback.
+
+### 6.4 Riscos de Segurança
+- **Vulnerabilidades e Privacidade:** Possíveis falhas de segurança e comprometimento de dados.
+  - **Mitigação:** Implementar medidas de segurança e proteção de dados.
+
+### 6.5 Riscos de Aceitação
+- **Dificuldade de Adoção:** Usuários podem ter dificuldade em usar o sistema.
+  - **Mitigação:** Fornecer treinamento e suporte.
+
+### 6.6 Riscos Financeiros
+- **Orçamento:** O projeto pode ultrapassar o orçamento.
+  - **Mitigação:** Controlar os custos e planejar adequadamente.
+
+## 7. Diagrama
+
+### Models
+- **User**
+  - Nome
+  - Email
+  - Senha
+  - Telefone
+  - Tipo usuário (médico, paciente)
+- **Consulta**
+  - Nome
+  - CRM
+  - Especialidade
+  - Data da consulta
+  - Horário
+  - Status (agendado, cancelado, concluído, pendente)
+  - Disponível (Sim/Não)
+- **Agendamento**
+  - Consulta_id
+  - User_id
+  - Data_agendamento
+
+### Controllers
+- UserController
+- ConsultaController
+- AgendamentoController
+- ProfileController
+- DashboardController
+
+### Middleware
+- ConsultasMiddleware
+- AgendamentosMiddleware
+- DashboardMiddleware
+
+## 8. Estrutura de Diagrama de Fluxo
+- **Início**
+  - ↓
+  - **Login**
+  - ↓
+  - **Usuário Logado**
+  - ↓
+  - **Busca de Consultas**
+  - ↓
+  - **Termo de Pesquisa Inserido**
+  - ↓
+  - **Consulta Disponível?**
+    - **Sim** / **Não**
+    - ↓ / ↓
+    - **Exibe Lista de Consultas**  |  **Exibe "Sem Consultas Disponíveis"**
+    - ↓
+    - **Selecionar Consulta**
+    - ↓
+    - **Detalhes da Consulta Exibidos**
+    - ↓
+    - **Confirmar Agendamento?**
+      - **Sim** / **Não**
+      - ↓ / ↓
+      - **Prosseguir com Agendamento**  |  **Retornar à Página Inicial**
+      - ↓
+      - **Consulta Disponível no Sistema?**
+        - **Sim** / **Não**
+        - ↓ / ↓
+        - **Confirmar Agendamento**  |  **Exibir Mensagem de Indisponibilidade**
+        - ↓
+        - **Agendamento Concluído**
+        - ↓
+        - **Fim**
